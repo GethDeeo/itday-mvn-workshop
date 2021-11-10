@@ -1,0 +1,14 @@
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# IDEA
+.idea/
+*.iml
+
+# Eclipse
+.metadata/
+.recommenders/
+.settings/
+.classpath
+.factorypath
+.project

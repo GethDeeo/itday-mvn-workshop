@@ -1,0 +1,13 @@
+*.md eol=lf
+
+*.xml eol=lf
+*.properties eol=lf
+**/src/main/resources/META-INF/MANIFEST.MF eol=lf
+
+*.java eol=lf
+*.groovy eol=lf
+/mvnw eol=lf
+/mvnw.cmd eol=crlf
+
+# other
+/LICENSE eol=lf
