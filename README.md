@@ -10,7 +10,7 @@ A feladatok leírása bővülni fog kellő mennyiségű mankóval (pl. irányít
 ## Előkövetelmények
 
 TODO  
-~**!!!** Ha még nem tetted, klónozd ezt a git repót és válts át a `develop` branchre!~  
+**!!!** Ha még nem tetted, klónozd ezt a git repót ~és válts át a `develop` branchre!~  
 ~`git checkout develop`~
 
 **!!!** A leírásban parancsok esetén a filerendszeri útvonalakban a Windows-on megszokott `\`-t találjátok,  
