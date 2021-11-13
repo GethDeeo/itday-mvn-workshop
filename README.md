@@ -9,9 +9,8 @@ A feladatok leírása bővülni fog kellő mennyiségű mankóval (pl. irányít
 
 ## Előkövetelmények
 
-TODO  
-**!!!** Ha még nem tetted, klónozd ezt a git repót ~és válts át a `develop` branchre!~  
-~`git checkout develop`~
+**!!!** Ha még nem tetted, klónozd ezt a git repót.  
+`git clone https://github.com/GethDeeo/itday-mvn-workshop.git`
 
 **!!!** A leírásban parancsok esetén a filerendszeri útvonalakban a Windows-on megszokott `\`-t találjátok,  
 Linux esetén mindenképpen a `/` használata szükséges.
@@ -19,7 +18,7 @@ Linux esetén mindenképpen a `/` használata szükséges.
 * JDK 1.8 (például [Amazon Corretto 8](https://github.com/corretto/corretto-8/releases/latest))
   * `JAVA_HOME` környezeti változó helyes beállítása  
     Ellenőrzés: `java -version` (ha a `PATH` környezeti változó tartalmazza a `<JAVA_HOME>\bin` könyvtárat)
-* _(opcionális)_ [Apache Maven 3.8.3](https://maven.apache.org/download.cgi)
+* _(opcionális)_ [Apache Maven](https://maven.apache.org/download.cgi) `3.6.3` (minimum)
   * a `PATH` környezeti változó tartalmazza a `<Maven>\bin` könyvtárat
 * _(ajánlott)_ Bármilyen XML-barát szerkesztő/IDE  
   Sokat segít ha színez, kiegészíti legalább a záró tageket.
@@ -30,12 +29,12 @@ Emiatt a parancssorban a megszokott `mvn <argumentumok>` forma helyett használh
 
 * Maven verzió ellenőrzése (különös tekintettel a Maven által használt JDK-ra):  
   `mvn -v`
-* ~Projekt ellenőrzése:~  
-  ~`mvn clean verify`~
+* Projekt ellenőrzése:  
+  `mvn clean verify`
 
 ## 0. intro
 
-TODO diasor (~30 perc előadás)
+(~30 perc előadás)
 
 * Workshop programja, menete
 * Alapfogalmak
@@ -58,9 +57,9 @@ A (tisztán Java) projekten szeretne a csapat Spockot használni unit tesztekhez
 (~15 perc + megbeszélés)
 
 1. Spock + Groovy teszt-függőségek felvétele
-2. Fordításhoz szükséges GMavenPlus plugin bekötése
-3. Futtatáshoz szükséges SureFire plugin konfigurációja
-4. Ellenőrzés
+3. Fordításhoz szükséges GMavenPlus plugin bekötése
+4. Futtatáshoz szükséges SureFire plugin konfigurációja
+5. Ellenőrzés
 
 ## 2. feladat: Új függőségek (1 külső + 1 provided) felvétele
 

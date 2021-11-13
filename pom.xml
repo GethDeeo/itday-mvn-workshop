@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>hu.tigra.itday.workshop</groupId>
+  <artifactId>workshop-parent</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <inceptionYear>2021</inceptionYear>
+  <licenses>
+    <license>
+      <name>Unlicense</name>
+      <url>https://unlicense.org/</url>
+    </license>
+  </licenses>
+  <modules>
+    <module>workshop-ejb</module>
+    <module>workshop-web</module>
+    <module>workshop</module>
+  </modules>
+  <scm>
+    <connection>scm:git:https://github.com/GethDeeo/itday-mvn-workshop.git</connection>
+    <developerConnection>scm:git:https://github.com/GethDeeo/itday-mvn-workshop.git</developerConnection>
+    <url>https://github.com/GethDeeo/itday-mvn-workshop</url>
+  </scm>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <require.java.version>[1.8.0,9.0)</require.java.version>
+    <require.maven.version>3.6.3</require.maven.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <!-- import versions -->
+    <version.org.junit>5.8.1</version.org.junit>
+    <!-- provided versions -->
+    <version.jakarta.platform>8.0.0</version.jakarta.platform>
+    <!-- test versions -->
+    <version.org.hibernate.validator>6.0.22.Final</version.org.hibernate.validator>
+    <!-- plugin versions -->
+    <version.maven.clean>3.1.0</version.maven.clean>
+    <version.maven.enforcer>3.0.0</version.maven.enforcer>
+    <version.maven.resources>3.2.0</version.maven.resources>
+    <version.maven.compiler>3.8.1</version.maven.compiler>
+    <version.maven.surefire>3.0.0-M5</version.maven.surefire>
+    <version.maven.jar>3.2.0</version.maven.jar>
+    <version.maven.war>3.3.2</version.maven.war>
+    <version.maven.ear>3.2.0</version.maven.ear>
+    <version.maven.install>3.0.0-M1</version.maven.install>
+    <version.maven.deploy>3.0.0-M1</version.maven.deploy>
+    <version.maven.site>3.9.1</version.maven.site>
+    <!-- utility versions -->
+    <version.org.codehaus.mojo.versions>2.8.1</version.org.codehaus.mojo.versions>
+    <version.fr.jcgay.maven.plugins.buildplan>1.5</version.fr.jcgay.maven.plugins.buildplan>
+    <version.maven.dependency>3.2.0</version.maven.dependency>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- import -->
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${version.org.junit}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- compile (project) -->
+      <dependency>
+        <groupId>hu.tigra.itday.workshop</groupId>
+        <artifactId>workshop-ejb</artifactId>
+        <version>${project.version}</version>
+        <type>ejb</type>
+      </dependency>
+      <dependency>
+        <groupId>hu.tigra.itday.workshop</groupId>
+        <artifactId>workshop-web</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+      </dependency>
+      <!-- test -->
+      <dependency>
+        <groupId>org.hibernate.validator</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>${version.org.hibernate.validator}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!-- provided -->
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-api</artifactId>
+      <version>${version.jakarta.platform}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${version.maven.clean}</version>
+          <!-- https://maven.apache.org/plugins/maven-clean-plugin/ -->
+          <!-- src: https://github.com/apache/maven-clean-plugin -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${version.maven.enforcer}</version>
+          <!-- https://maven.apache.org/enforcer/maven-enforcer-plugin/ -->
+          <!-- src: https://github.com/apache/maven-enforcer -->
+          <executions>
+            <execution>
+              <id>default-enforce</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <rules>
+              <requireJavaVersion>
+                <version>${require.java.version}</version>
+              </requireJavaVersion>
+              <requireMavenVersion>
+                <version>${require.maven.version}</version>
+              </requireMavenVersion>
+              <requirePluginVersions/>
+            </rules>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${version.maven.resources}</version>
+          <!-- https://maven.apache.org/plugins/maven-resources-plugin/ -->
+          <!-- src: https://github.com/apache/maven-resources-plugin -->
+          <configuration>
+            <overwrite>true</overwrite>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${version.maven.compiler}</version>
+          <!-- https://maven.apache.org/plugins/maven-compiler-plugin/ -->
+          <!-- src: https://github.com/apache/maven-compiler-plugin -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${version.maven.surefire}</version>
+          <!-- https://maven.apache.org/surefire/maven-surefire-plugin/ -->
+          <!-- src: https://github.com/apache/maven-surefire -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${version.maven.jar}</version>
+          <!-- https://maven.apache.org/plugins/maven-jar-plugin/ -->
+          <!-- src: https://github.com/apache/maven-jar-plugin -->
+          <configuration>
+            <archive>
+              <manifestFile>${project.basedir}/src/main/MANIFEST.MF</manifestFile>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                <addBuildEnvironmentEntries>true</addBuildEnvironmentEntries>
+              </manifest>
+              <manifestEntries>
+                <Built-By>${user.name}</Built-By>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>${version.maven.war}</version>
+          <!-- https://maven.apache.org/plugins/maven-war-plugin/ -->
+          <!-- src: https://github.com/apache/maven-war-plugin -->
+          <configuration>
+            <archive>
+              <manifestFile>${project.basedir}/src/main/MANIFEST.MF</manifestFile>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                <addBuildEnvironmentEntries>true</addBuildEnvironmentEntries>
+              </manifest>
+              <manifestEntries>
+                <Built-By>${user.name}</Built-By>
+              </manifestEntries>
+            </archive>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-ear-plugin</artifactId>
+          <version>${version.maven.ear}</version>
+          <!-- https://maven.apache.org/plugins/maven-ear-plugin/ -->
+          <!-- src: https://github.com/apache/maven-ear-plugin -->
+          <executions>
+            <execution>
+              <id>default-generate-application-xml</id>
+              <phase>none</phase>
+            </execution>
+          </executions>
+          <configuration>
+            <outputFileNameMapping>@{artifactId}@-@{version}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
+            <applicationXml>${project.basedir}/src/main/application.xml</applicationXml>
+            <archive>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                <addBuildEnvironmentEntries>true</addBuildEnvironmentEntries>
+              </manifest>
+              <manifestEntries>
+                <Built-By>${user.name}</Built-By>
+              </manifestEntries>
+            </archive>
+            <skinnyModules>true</skinnyModules>
+            <skipClassPathModification>true</skipClassPathModification>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${version.maven.install}</version>
+          <!-- https://maven.apache.org/plugins/maven-install-plugin/ -->
+          <!-- src: https://github.com/apache/maven-install-plugin -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${version.maven.deploy}</version>
+          <!-- https://maven.apache.org/plugins/maven-deploy-plugin/ -->
+          <!-- src: https://github.com/apache/maven-deploy-plugin -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${version.maven.site}</version>
+          <!-- https://maven.apache.org/plugins/maven-site-plugin/ -->
+          <!-- src: https://github.com/apache/maven-site-plugin -->
+        </plugin>
+        <!-- utility -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${version.org.codehaus.mojo.versions}</version>
+          <!-- https://www.mojohaus.org/versions-maven-plugin/ -->
+          <!-- src: https://github.com/mojohaus/versions-maven-plugin -->
+        </plugin>
+        <plugin>
+          <groupId>fr.jcgay.maven.plugins</groupId>
+          <artifactId>buildplan-maven-plugin</artifactId>
+          <version>${version.fr.jcgay.maven.plugins.buildplan}</version>
+          <!-- https://buildplan.jcgay.fr/ -->
+          <!-- src: https://github.com/jcgay/buildplan-maven-plugin -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${version.maven.dependency}</version>
+          <!-- https://maven.apache.org/plugins/maven-dependency-plugin/ -->
+          <!-- src: https://github.com/apache/maven-dependency-plugin -->
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

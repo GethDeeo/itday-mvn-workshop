@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>hu.tigra.itday.workshop</groupId>
+    <artifactId>workshop-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>workshop</artifactId>
+  <packaging>ear</packaging>
+  <properties>
+  </properties>
+
+  <dependencies>
+    <!-- compile (project) -->
+    <dependency>
+      <groupId>hu.tigra.itday.workshop</groupId>
+      <artifactId>workshop-ejb</artifactId>
+      <type>ejb</type>
+    </dependency>
+    <dependency>
+      <groupId>hu.tigra.itday.workshop</groupId>
+      <artifactId>workshop-web</artifactId>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-ear-plugin</artifactId>
+        <configuration>
+          <modules>
+            <ejbModule>
+              <groupId>hu.tigra.itday.workshop</groupId>
+              <artifactId>workshop-ejb</artifactId>
+              <bundleFileName>workshop-ejb.jar</bundleFileName>
+            </ejbModule>
+            <webModule>
+              <groupId>hu.tigra.itday.workshop</groupId>
+              <artifactId>workshop-web</artifactId>
+              <bundleFileName>workshop-web.war</bundleFileName>
+            </webModule>
+          </modules>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
