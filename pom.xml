@@ -32,6 +32,7 @@
     <!-- import versions -->
     <version.org.codehaus.groovy>3.0.9</version.org.codehaus.groovy>
     <version.org.junit>5.8.1</version.org.junit>
+    <version.org.apache.logging.log4j>2.14.1</version.org.apache.logging.log4j>
     <version.org.spockframework>2.0-groovy-3.0</version.org.spockframework>
     <!-- provided versions -->
     <version.jakarta.platform>8.0.0</version.jakarta.platform>
@@ -59,6 +60,13 @@
   <dependencyManagement>
     <dependencies>
       <!-- import -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>${version.org.apache.logging.log4j}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>org.codehaus.groovy</groupId>
         <artifactId>groovy-bom</artifactId>
