@@ -1,5 +1,6 @@
 package hu.tigra.itday.workshop.greeting;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.Pattern;
@@ -11,7 +12,13 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 @Path("greeting")
 public class GreetingResource {
-  @Inject private GreetingBean greetingBean;
+  private GreetingBean greetingBean;
+
+  @Inject
+  @PostConstruct
+  public void init(final GreetingBean greetingBean) {
+    this.greetingBean = greetingBean;
+  }
 
   @GET
   @Path("{name}")
