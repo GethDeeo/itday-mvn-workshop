@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.joda.time.DateTime;
 
 @Stateless
 public class GreetingBean {
@@ -12,6 +13,7 @@ public class GreetingBean {
   protected static final String TEMPLATE = "Hello, %s!";
 
   public String getGreeting(@NotNull @Pattern(regexp = "\\p{IsAlphabetic}+") final String name) {
+    LOGGER.info(DateTime.now());
     LOGGER.info("Greeting request from: {}", name);
     return String.format(TEMPLATE, name);
   }

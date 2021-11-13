@@ -36,6 +36,7 @@
     <version.org.spockframework>2.0-groovy-3.0</version.org.spockframework>
     <!-- provided versions -->
     <version.jakarta.platform>8.0.0</version.jakarta.platform>
+    <version.joda-time>2.9.7</version.joda-time>
     <!-- test versions -->
     <version.org.hibernate.validator>6.0.22.Final</version.org.hibernate.validator>
     <!-- plugin versions -->
@@ -87,6 +88,12 @@
         <version>${version.org.spockframework}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <!-- provided -->
+      <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>${version.joda-time}</version>
       </dependency>
       <!-- compile (project) -->
       <dependency>
