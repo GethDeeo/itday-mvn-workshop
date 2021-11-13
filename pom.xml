@@ -209,7 +209,7 @@
           <!-- src: https://github.com/apache/maven-jar-plugin -->
           <configuration>
             <archive>
-              <manifestFile>${project.basedir}/src/main/MANIFEST.MF</manifestFile>
+              <manifestFile>${project.basedir}/src/main/resources/META-INF/MANIFEST.MF</manifestFile>
               <manifest>
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                 <addBuildEnvironmentEntries>true</addBuildEnvironmentEntries>
@@ -227,7 +227,7 @@
           <!-- src: https://github.com/apache/maven-war-plugin -->
           <configuration>
             <archive>
-              <manifestFile>${project.basedir}/src/main/MANIFEST.MF</manifestFile>
+              <manifestFile>${project.basedir}/src/main/resources/META-INF/MANIFEST.MF</manifestFile>
               <manifest>
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                 <addBuildEnvironmentEntries>true</addBuildEnvironmentEntries>
