@@ -30,7 +30,9 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <!-- import versions -->
+    <version.org.codehaus.groovy>3.0.9</version.org.codehaus.groovy>
     <version.org.junit>5.8.1</version.org.junit>
+    <version.org.spockframework>2.0-groovy-3.0</version.org.spockframework>
     <!-- provided versions -->
     <version.jakarta.platform>8.0.0</version.jakarta.platform>
     <!-- test versions -->
@@ -38,6 +40,7 @@
     <!-- plugin versions -->
     <version.maven.clean>3.1.0</version.maven.clean>
     <version.maven.enforcer>3.0.0</version.maven.enforcer>
+    <version.org.codehaus.gmavenplus>1.13.0</version.org.codehaus.gmavenplus>
     <version.maven.resources>3.2.0</version.maven.resources>
     <version.maven.compiler>3.8.1</version.maven.compiler>
     <version.maven.surefire>3.0.0-M5</version.maven.surefire>
@@ -57,9 +60,23 @@
     <dependencies>
       <!-- import -->
       <dependency>
+        <groupId>org.codehaus.groovy</groupId>
+        <artifactId>groovy-bom</artifactId>
+        <version>${version.org.codehaus.groovy}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
         <version>${version.org.junit}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.spockframework</groupId>
+        <artifactId>spock-bom</artifactId>
+        <version>${version.org.spockframework}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -145,10 +162,30 @@
           <!-- src: https://github.com/apache/maven-compiler-plugin -->
         </plugin>
         <plugin>
+          <groupId>org.codehaus.gmavenplus</groupId>
+          <artifactId>gmavenplus-plugin</artifactId>
+          <version>${version.org.codehaus.gmavenplus}</version>
+          <!-- https://groovy.github.io/GMavenPlus/ -->
+          <!-- src: https://github.com/groovy/GMavenPlus -->
+          <executions>
+            <execution>
+              <id>default-compileTests</id>
+              <goals>
+                <goal>compileTests</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${version.maven.surefire}</version>
           <!-- https://maven.apache.org/surefire/maven-surefire-plugin/ -->
           <!-- src: https://github.com/apache/maven-surefire -->
+          <configuration>
+            <includes>
+              <include>**/*Spec.*</include>
+            </includes>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
