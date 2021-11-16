@@ -1,12 +1,5 @@
 # IT Day - Maven workshop
 
----
-
-**!!!** A kiinduló projekt még feltöltés alatt van, jelenleg a követelmények és a várható program tanulmányozható :)  
-A feladatok leírása bővülni fog kellő mennyiségű mankóval (pl. irányított linkek).
-
----
-
 ## Előkövetelmények
 
 **!!!** Ha még nem tetted, klónozd ezt a git repót.  
@@ -56,10 +49,12 @@ Emiatt a parancssorban a megszokott `mvn <argumentumok>` forma helyett használh
 A (tisztán Java) projekten szeretne a csapat Spockot használni unit tesztekhez.  
 (~15 perc + megbeszélés)
 
-1. Spock + Groovy teszt-függőségek felvétele
-3. Fordításhoz szükséges GMavenPlus plugin bekötése
-4. Futtatáshoz szükséges SureFire plugin konfigurációja
-5. Ellenőrzés
+1. Spock + Groovy teszt-függőségek felvétele  
+   https://github.com/spockframework/spock-example
+2. Fordításhoz szükséges GMavenPlus plugin bekötése  
+   https://groovy.github.io/GMavenPlus/
+3. Futtatáshoz szükséges SureFire plugin konfigurációja
+4. Ellenőrzés
 
 ## 2. feladat: Új függőségek (1 külső + 1 provided) felvétele
 
@@ -68,8 +63,10 @@ A projekten rögtön 2 új függőséget kell felvenni, ahol az egyiket a projek
 
 1. Függőségek vizsgálata (tranzitivitás)
 2. Függőségek felvétele
-3. Kivételek definiálása, `MANIFEST.MF` bővítése
-4. Ellenőrzés
+   1. https://logging.apache.org/log4j/2.x/
+   2. https://www.joda.org/joda-time/
+4. Kivételek definiálása, `MANIFEST.MF` bővítése
+5. Ellenőrzés
 
 ## 3. feladat: Központi tárolóba történő deploy szűkítéssel
 
@@ -77,5 +74,6 @@ A projekt EAR modulja tartalmaz minden szükséges dolgot, így elég csak azt f
 (~15 perc + megbeszélés)
 
 1. Modulok kizárása a deploy folyamatból
-2. POM lapítása
+2. POM lapítása  
+   https://www.mojohaus.org/flatten-maven-plugin/
 3. Ellenőrzés
