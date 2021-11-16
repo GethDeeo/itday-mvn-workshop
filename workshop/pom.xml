@@ -11,6 +11,8 @@
   <artifactId>workshop</artifactId>
   <packaging>ear</packaging>
   <properties>
+    <flatten.mode>fatjar</flatten.mode>
+    <maven.deploy.skip>false</maven.deploy.skip>
   </properties>
 
   <dependencies>
@@ -29,6 +31,10 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+      </plugin>
       <plugin>
         <artifactId>maven-ear-plugin</artifactId>
         <configuration>
